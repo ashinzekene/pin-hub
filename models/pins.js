@@ -8,7 +8,6 @@ var pinSchema = mongoose.Schema({
 	},
 	user : {
     type : String,
-    lowercase : true,
     ref : 'users',
     required: true,
     select: false
@@ -21,6 +20,9 @@ var pinSchema = mongoose.Schema({
 	used : {
 		type: String,
 		default: false
+	},
+	expiry: {
+		type: Date,
 	},
 	date : {
 		type: Date,

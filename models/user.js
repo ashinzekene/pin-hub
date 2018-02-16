@@ -1,13 +1,28 @@
-var mongoose = require('mongoose')
-var bcrypt = require('bcrypt-nodejs')
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt-nodejs')
+const subscriptions = [
+	"free",
+	"basic",
+	"extended",
+]
 
-var userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
 	username : String,
+	firstName: String,
+	lastName: String,
+	photoUrl: String,
+	subscriptionType: {
+		type: String,
+		enum:  subscriptions,
+		default: subscriptions[0],
+	},
 	email : {
 		type: String,
-		required: false
 	},
-	password : String
+	password : {
+		type: String,
+		minlength: 6,
+	}
 })
 
 userSchema.methods.generateHash = function(password) {
@@ -17,4 +32,4 @@ userSchema.methods.validatePassword = function(password) {
 	return bcrypt.compareSync(password, this.password)
 }
 
-var User = module.exports = mongoose.model('user', userSchema)
+const User = module.exports = mongoose.model('user', userSchema)
