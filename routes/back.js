@@ -1,8 +1,6 @@
 var express = require('express')
 var rand = require('randomstring')
 var Pins =require('../models/pins')
-var UsedPins =require('../models/used-pins')
-var GeneratedPins =require('../models/generated-pins')
 var route = express.Router()
 
 // route.post('/', function(req, res) {

@@ -2,9 +2,6 @@ var express = require('express')
 var passport = require('passport')
 var route = express.Router()
 var Pins = require('../models/pins')
-var UsedPins =require('../models/used-pins')
-var Questions = require('../models/questions')
-var GeneratedPins =require('../models/generated-pins')
 
 route.get('/', function(req, res, next) {
 	res.render('index2')
