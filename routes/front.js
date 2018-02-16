@@ -32,12 +32,6 @@ route.post('/sign-up', passport.authenticate('sign-up', {
 	failureFlash: true  
 }))
 
-route.get('/api/fsc113/all-questions', function(req, res) {
-	Questions.find(function(err, questions) {
-		res.setHeader('Access-Control-Allow-Origin','*')
-		res.json({result: questions})
-	})
-})
 route.get('/validate', /*passport.authenticate('basic', { session: false }),*/ function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin','*')
 	var pin = req.query.pin
@@ -71,6 +65,13 @@ route.get('/validate', /*passport.authenticate('basic', { session: false }),*/ f
 			}
 		})
 	}
+})
+
+route.get('/api/fsc113/all-questions', function(req, res) {
+	Questions.find(function(err, questions) {
+		res.setHeader('Access-Control-Allow-Origin','*')
+		res.json({result: questions})
+	})
 })
 
 module.exports = route

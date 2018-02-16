@@ -19,9 +19,11 @@ var port = process.env.PORT || 5500
 mongoose.promise = Promise;
 init(passport, app)
 
-// mongoose.connect("mongodb://127.0.0.1/pin-hub")
-mongoose.connect(`mongodb://ekonash:pinpinpin@ds023704.mlab.com:23704/pin-hub`, function(err) {
-	mongoose.connect(`mongodb://127.0.0.1/pin-hub`)
+let mongoUrl = process.env.ENV === 'dev' ? 'mongodb://127.0.0.1/pin-hub' : process.env.DB_URL
+
+mongoose.connect(mongoUrl, { useMongoClient: true }, function(err) {
+	if (err) return console.log("Error in DB connection")
+	console.log("DB:", mongoUrl)
 })
 function isAuthenticated(req, res, next) {
 	if(req.isAuthenticated()) return next()
@@ -38,5 +40,5 @@ app.use('/user', isAuthenticated, backEnd)
 app.use('/', frontEnd)
 app.listen(port, function(err) {
 	if (err) console.log(err)
-	console.log("Shit is going down on port ", port)
+	console.log("PORT:", port)
 })
