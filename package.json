@@ -1,0 +1,43 @@
+{
+  "name": "pin-hub",
+  "version": "1.0.0",
+  "description": "generate and authenticate your apps and softwares with pin validation from Pin Hub",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "latest",
+    "body-parser": "^1.16.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "ejs": "latest",
+    "express": "^4.15.0",
+    "express-favicon": "^2.0.0",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.9.5",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "randomstring": "^1.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "pin",
+    "authenticate",
+    "generate",
+    "pin",
+    "validate",
+    "pin",
+    "random",
+    "string",
+    "get",
+    "pins"
+  ],
+  "author": "Ashinze Ekene",
+  "license": "ISC"
+}
