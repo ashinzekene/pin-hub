@@ -4,7 +4,7 @@ var route = express.Router()
 var Pins = require('../models/pins')
 
 route.get('/', function(req, res, next) {
-	res.render('index2')
+	res.render('index')
 })
 route.get('/about', function(req, res, next) {
 	res.render('todo')
