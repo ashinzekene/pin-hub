@@ -40,7 +40,6 @@ module.exports = function (passport, app) {
         newUser.username = username
         newUser.email = req.email
         newUser.password = newUser.generateHash(password)
-
         newUser.save(function (err, newUser) {
           if (err) console.log("could not save ", err)
           done(null, newUser)

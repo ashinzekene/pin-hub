@@ -29,6 +29,11 @@ function isAuthenticated(req, res, next) {
 	if(req.isAuthenticated()) return next()
 	return res.redirect('/')
 }
+
+app.use(function(req, res, next) {
+	console.log(`${req.method}: ${req.url}`)
+	next()
+})
 app.use(session({secret: 'ekeneOwnsPinhub'}))
 app.use(flash())
 app.use("/assets", express.static("public"))

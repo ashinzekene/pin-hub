@@ -8,10 +8,9 @@
     <link rel="icon" href="/assets/favicon.ico">
 
     <title>Sign Up - PIN HUB</title>
-
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="/assets/css/signin.css" rel="stylesheet"> -->
+    <link href="/assets/styles/style.css" rel="stylesheet">
     <style>
+
       .container {
         display: flex;
         justify-content: center;
@@ -25,7 +24,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <main>
       <form class="form-signup" method="POST" action="/sign-up">
         <h2 class="text-center">Create an Account</h2>
         <div class="form-group">
@@ -38,18 +37,14 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="text" name="password" id="password" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="re-enter-password">Re-enter Password</label>
-          <input type="text" class="form-control">
+          <input type="password" name="password" id="password" class="form-control">
         </div>
         <% if (message.length > 0) { %>
           <div class="alert alert-danger"><%= message %></div>
         <% } %>
       
-        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <button class="my-btn sign-up" type="submit">Sign Up</button>
       </form>
-    </div>
+    </main>
   </body>
 </html>
