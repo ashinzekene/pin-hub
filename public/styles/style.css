@@ -61,8 +61,8 @@ h1 {
   border: none;
 }
 
-.my-btn.sign-up {
-  margin-top: 10px;
+.my-btn.sign-up, .my-btn.sign-in {
+  margin-top:20px;
 } 
 
 h2 {

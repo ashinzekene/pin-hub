@@ -1,60 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/assets/favicon.ico">
 
-    <title>Sign In - PIN-HUB</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Sanchez:400,400italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic' rel='stylesheet' type='text/css'> 
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-      .form-container {
-        max-width: 350px;
-        padding: 20px;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/assets/favicon.ico">
 
-  <body>
-    <main role="banner" id="fh5co-header" data-stellar-background-ratio="0.5">
-      <div class="fh5co-overlay"></div>
-      <div class="container">
-        <div class="fh5co-intro-wrap">
-          <div class="fh5co-intro">
-            <div class="row">
-              <form class="container form-container" style="font-family: Montserrat" method="POST" action="/sign-in">
-                <h2 class=" text-center">Please sign in</h2>
+  <title>Sign In - PIN-HUB</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/style.css">
+  <style>
+    .form-signup {
+      max-width: 450px;
+      width: 100%;
+    }
+  </style>
+</head>
 
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
-
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                  </label>
-                </div>
-                <% if (message.length > 0) { %>
-                  <div class="alert alert-danger"><%= message %></div>
-                <% } %>
-                <button class="btn btn-secondary btn-block" type="submit">Sign in</button>
-              </form>
-            </div>
-          </div>
-        </div>
+<body>
+  <main>
+    <form class="form-signup" method="POST" action="/sign-in">
+      <h2 class="text-center">Sign In</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="form-control">
       </div>
-    </main>
-		<script src="/assets/js/jquery-slim.min.js"></script>
-		<script src="/assets/js/bootstrap.min.js"></script>
-		<script src="/assets/js/main-1.js"></script>	
-  </body>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control">
+      </div>
+      <% if (message.length > 0) { %>
+        <div class="alert alert-danger">
+          <%= message %>
+        </div>
+        <% } %>
+          <button class="my-btn sign-in" type="submit">Sign In</button>
+    </form>
+  </main>
+  <script src="/assets/js/jquery-slim.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/main-1.js"></script>
+</body>
+
 </html>
