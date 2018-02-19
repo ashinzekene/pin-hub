@@ -45,10 +45,11 @@ h1 {
   letter-spacing: 15px;
   line-height: 6rem;
 }
-.text {
+.intro-text {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2rem;
+  padding-bottom: 20px;
 }
 .my-btn {
   background-color: #EEEEEE;
@@ -61,9 +62,19 @@ h1 {
   border: none;
 }
 
-.my-btn.sign-up, .my-btn.sign-in {
+.help-text {
+  padding-top: 20px;
+}
+.sign-in-text, .sign-in-text>a {
+  color: white;
+  font-size: 1.2rem;
+}
+.sign-in-text>a {
+  text-decoration: underline
+}
+.my-btn {
   margin-top:20px;
-} 
+}
 
 h2 {
   font-size: 3rem

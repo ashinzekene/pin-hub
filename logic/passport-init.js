@@ -19,7 +19,7 @@ module.exports = function (passport, app) {
       if (err) done(err, false)
       if (!user) {
         done(null, false, req.flash('signinMessage', 'Username does not exist, You can create an account instead'))
-      } else if (user.validatePassword(password)) {
+      } else if (!user.validatePassword(password)) {
         done(null, false, req.flash('signinMessage', 'The password is incorrect'))
       } else {
         console.log('password and username correct')
