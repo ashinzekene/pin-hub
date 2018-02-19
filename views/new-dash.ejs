@@ -9,16 +9,19 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/styles/sidebar.css">
+  <link rel="stylesheet" href="./assets/styles/dashboard.css">
 </head>
 <style>
   .navbar-brand {
     font-size: 2rem;
     letter-spacing: 15px;
   }
+
   .dashboard-navbar {
     box-shadow: 1px 3px 6px 3px rgba(0, 0, 0, 0.2);
   }
 </style>
+
 <body>
   <header>
     <nav class="navbar dashboard-navbar navbar-dark py-3" style="background: rgb(8, 141, 230)">
@@ -32,9 +35,34 @@
     </nav>
   </header>
   <div id="wrapper">
-    <%- include('templates/sidebar'); %>. %>
-      <div id="page-content-wrapper">
-
+    <%- include('templates/sidebar'); %>
+      <div id="page-content-wrapper" class="container m-auto pt-5">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+                <h1>30</h1>
+                <p>unused pins</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+                <h1>130</h1>
+                <p>used pins</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+                <h1>1110</h1>
+                <p>created pins</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+                <h1>30</h1>
+                <p>unused pins</p>
+            </div>
+          </div>
+        </div>
       </div>
   </div>
 </body>
