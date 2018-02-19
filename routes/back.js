@@ -21,7 +21,7 @@ route.get('/', function(req, res) {
 		Pins.count(function(err, total) {
 			Pins.find({used: true}).count(function(err, allUsed) {
 				if (err) console.log(err)
-				res.render('dashboard', {pins: pins, total: total, used: allUsed})	
+				res.render('new-dash', {pins: pins, total: total, used: allUsed})	
 			})
 		})
 	})
