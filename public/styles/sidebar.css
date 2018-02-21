@@ -24,7 +24,7 @@ body {
   margin-left: -250px;
   overflow-y: auto;
   background: #FFF;
-  border-right: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-right: 0.5px solid rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -55,7 +55,6 @@ body {
   width: 250px;
   margin: 0;
   padding: 0;
-  padding-top: 30px;
   list-style: none;
 }
 
@@ -66,16 +65,13 @@ body {
 
 .sidebar-nav li a {
   display: block;
-  padding: 10px 0px;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #444444;
+  color: #999999;
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #111111;
+  color: #333;
   background: rgba(255, 255, 255, 0.1);
 }
 
