@@ -11,16 +11,6 @@
   <link rel="stylesheet" href="./assets/styles/sidebar.css">
   <link rel="stylesheet" href="./assets/styles/dashboard.css">
 </head>
-<style>
-  .navbar-brand {
-    font-size: 2rem;
-    letter-spacing: 15px;
-  }
-
-  .dashboard-navbar {
-    box-shadow: 1px 3px 6px 3px rgba(0, 0, 0, 0.2);
-  }
-</style>
 
 <body>
   <header>
@@ -35,29 +25,29 @@
     </nav>
   </header>
   <div id="wrapper">
-    <%- include('templates/sidebar'); %>
+    <%- include('../templates/sidebar', { page: "dashboard" }); %>
       <div id="page-content-wrapper" class="container m-auto pt-5">
         <div class="row">
           <div class="col-xs-12 col-md-6 col-lg-3 p-3">
-            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+            <div class="my-card text-uppercase rounded py-4 text-white text-center font-weight-light">
                 <h1>30</h1>
                 <p>unused pins</p>
             </div>
           </div>
           <div class="col-xs-12 col-md-6 col-lg-3 p-3">
-            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+            <div class="my-card text-uppercase rounded py-4 text-white text-center font-weight-light">
                 <h1>130</h1>
                 <p>used pins</p>
             </div>
           </div>
           <div class="col-xs-12 col-md-6 col-lg-3 p-3">
-            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+            <div class="my-card text-uppercase rounded py-4 text-white text-center font-weight-light">
                 <h1>1110</h1>
                 <p>created pins</p>
             </div>
           </div>
           <div class="col-xs-12 col-md-6 col-lg-3 p-3">
-            <div class="card my-card text-uppercase text-white text-center font-weight-light">
+            <div class="my-card text-uppercase rounded py-4 text-white text-center font-weight-light">
                 <h1>30</h1>
                 <p>unused pins</p>
             </div>
@@ -65,18 +55,4 @@
         </div>
       </div>
   </div>
-</body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-  crossorigin="anonymous"></script>
-<script>
-  $("#menu-toggle").click(function (e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  }); 
-</script>
-
-</html>
+  <%- include('../templates/bottom') %>

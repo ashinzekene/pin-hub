@@ -1,18 +1,18 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
     <!-- <li class="sidebar-brand">
-      <a href="#">
+      <a class="py-3" href="#">
         Start Bootstrap
       </a>
     </li> -->
     <li>
-      <a href="#">Dashboard</a>
+      <a class="py-3 <%= page === 'dashboard' ? 'active':'' %>" href="#">Dashboard</a>
     </li>
     <li>
-      <a href="#">Pin Categories</a>
+      <a class="py-3 <%= page === 'pin categories' ? 'active':'' %>" href="categories">Pin Categories</a>
     </li>
     <li>
-      <a href="#">Pins</a>
+      <a class="py-3 <%= page === 'pins' ? 'active':'' %>" href="pins">Pins</a>
     </li>
   </ul>
 </div>
