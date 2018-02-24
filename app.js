@@ -12,7 +12,7 @@ var init = require('./logic/passport-init')
 var User = require('./models/user')
 var app = express()
 var frontEnd = require('./routes/front')
-var backEnd = require('./routes/back')
+var user = require('./routes/user')
 require('dotenv').config()
 var port = process.env.PORT || 5500
 
@@ -41,10 +41,20 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(passport.initialize())
 app.use(passport.session())
 app.set('view engine', 'ejs')
-app.use('/user', backEnd)
-// app.use('/user', isAuthenticated, backEnd)
+
 app.use('/', frontEnd)
+// Redirect to username url
+app.use('/user', isAuthenticated, function(req, res) {
+	console.log(req.user)
+	res.redirect(`/${req.user.username}`)
+})
+app.use('/:username', isAuthenticated, user)
+app.use((err, req, res, next) => {
+	res.render('error')
+})
+
 app.listen(port, function(err) {
 	if (err) console.log(err)
 	console.log("PORT:", port)
 })
+
