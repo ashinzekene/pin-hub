@@ -1,0 +1,41 @@
+    <%- include('../templates/user-header', { styles: [] }) %>
+    <%- include('../templates/sidebar', { page: "dashboard" }); %>
+      <div id="page-content-wrapper" class="container m-auto pt-5">
+        <div class="container">
+          <div class="display-4 text-center py-3">Hello </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="theme-bg text-uppercase rounded py-4 text-white text-center font-weight-light">
+                <h1>30</h1>
+                <p>unused pins</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="theme-bg text-uppercase rounded py-4 text-white text-center font-weight-light">
+                <h1>130</h1>
+                <p>used pins</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="theme-bg text-uppercase rounded py-4 text-white text-center font-weight-light">
+                <h1>310</h1>
+                <p>created pins</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-3 p-3">
+            <div class="theme-bg text-uppercase rounded py-4 text-white text-center font-weight-light">
+                <h1>30</h1>
+                <p>unused pins</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <a href="/user/pins" class="btn btn-lg px-5 text-white theme-bg">Pins</a>
+          </div>
+          <div class="col-6">
+            <a href="/user/categories" class="btn btn-lg px-5 text-white theme-bg">Categories</a>
+          </div>
+        </div>
+      </div>
+  </div>
+  <%- include('../templates/bottom') %>

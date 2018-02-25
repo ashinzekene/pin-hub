@@ -1,33 +1,16 @@
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>
-    ashinzekene PIN HUB</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/styles/sidebar.css">
-  <link rel="stylesheet" href="./assets/styles/dashboard.css">
-</head>
-
-<body>
-  <header>
-    <nav class="navbar dashboard-navbar navbar-dark py-3" style="background: rgb(8, 141, 230)">
-      <a href="#menu-toggle" class="btn mx-2" id="menu-toggle">
-        <span class="navbar-toggler-icon"></span>
-      </a>
-      <a class="navbar-brand" href="#">
-        PIN HUB
-      </a>
-      <a></a>
-    </nav>
-  </header>
-  <div id="wrapper">
-    <%- include('../templates/sidebar', { page: "dashboard" }); %>
+<%- include('../templates/user-header', { styles: [] }) %>
+<%- include('../templates/sidebar', { page: "pins" }); %>
       <div id="page-content-wrapper" class="container m-auto pt-5">
         <h3 class="font-weight-light">Generate Pins</h3>
+        <div class="form">
+          <select name="category" id="" class="custom-select">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </div>
       </div>
   </div>
   <%- include('../templates/bottom') %>

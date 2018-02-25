@@ -43,13 +43,9 @@ app.use(passport.session())
 app.set('view engine', 'ejs')
 
 app.use('/', frontEnd)
-// Redirect to username url
-app.use('/user', isAuthenticated, function(req, res) {
-	console.log(req.user)
-	res.redirect(`/${req.user.username}`)
-})
-app.use('/:username', isAuthenticated, user)
+app.use('/user', user)
 app.use((err, req, res, next) => {
+	console.log(err)
 	res.render('error')
 })
 

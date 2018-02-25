@@ -6,13 +6,16 @@
       </a>
     </li> -->
     <li>
-      <a class="py-3 <%= page === 'dashboard' ? 'active':'' %>" href="#">Dashboard</a>
+      <a class="py-3 <%= page === 'dashboard' ? 'active':'' %>" href="/user">Dashboard</a>
     </li>
     <li>
-      <a class="py-3 <%= page === 'pin categories' ? 'active':'' %>" href="categories">Pin Categories</a>
+      <a class="py-3 <%= page === 'categories' ? 'active':'' %>" href="/user/categories">Categories</a>
     </li>
     <li>
-      <a class="py-3 <%= page === 'pins' ? 'active':'' %>" href="pins">Pins</a>
+      <a class="py-3 <%= page === 'pins' ? 'active':'' %>" href="/user/pins">Pins</a>
+    </li>
+    <li>
+      <a class="py-3 <%= page === 'settings' ? 'active':'' %>" href="/user/settings">settings</a>
     </li>
   </ul>
 </div>

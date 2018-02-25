@@ -67,7 +67,9 @@ body {
   display: block;
   text-decoration: none;
   color: #999999;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .sidebar-nav li a:hover {
@@ -104,20 +106,20 @@ body {
   #wrapper {
     padding-left: 0;
   }
-  #wrapper.toggled {
+  #wrapper.toggled, #wrapper.untoggled {
     padding-left: 250px;
   }
   #sidebar-wrapper {
     width: 0;
   }
-  #wrapper.toggled #sidebar-wrapper {
+  #wrapper.toggled #sidebar-wrapper, #wrapper.untoggled #sidebar-wrapper {
     width: 250px;
   }
   #page-content-wrapper {
     padding: 20px;
     position: relative;
   }
-  #wrapper.toggled #page-content-wrapper {
+  #wrapper.toggled #page-content-wrapper, #wrapper.untoggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
   }

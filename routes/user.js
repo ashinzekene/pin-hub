@@ -3,11 +3,13 @@ const router = express.Router()
 const User = require('../models/user')
 
 router.get('/', function (req, res) {
-	if (req.params.username === req.user.username) {
-		res.render('user/new-dash', { user: req.user })
-	} else {
-		res.render("error")
-	}
+	res.render('user/dashboard', { user: req.user })
+})
+router.get('/pins',function (req, res) {
+	res.render('user/pins')
+})
+router.get('/categories',function (req, res) {
+	res.render('user/categories')
 })
 router.use('pins', require('./pin'))
 
