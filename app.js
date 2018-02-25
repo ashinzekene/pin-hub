@@ -9,10 +9,8 @@ var logger = require("morgan")
 var passport = require("passport")
 
 var init = require('./logic/passport-init')
-var User = require('./models/user')
 var app = express()
 var frontEnd = require('./routes/front')
-var user = require('./routes/user')
 require('dotenv').config()
 var port = process.env.PORT || 5500
 

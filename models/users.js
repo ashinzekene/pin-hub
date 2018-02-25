@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
+const { Schema } = mongoose
 const subscriptions = [
 	"free",
 	"basic",
 	"extended",
 ]
 
-const userSchema = mongoose.Schema({
+const userSchema = new Schema({
 	username : String,
 	firstName: String,
 	lastName: String,
@@ -22,6 +23,7 @@ const userSchema = mongoose.Schema({
 	password : {
 		type: String,
 		minlength: 6,
+		select: false,
 	}
 })
 

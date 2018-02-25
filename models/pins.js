@@ -1,6 +1,7 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
+const { Schema } = mongoose 
 
-var pinSchema = mongoose.Schema({
+const pinSchema = new Schema({
 	pin : {
 		type: String,
 		required: true,
@@ -30,4 +31,4 @@ var pinSchema = mongoose.Schema({
 	}
 })
 
-var Pin = module.exports = mongoose.model('pin', pinSchema)
+const Pin = module.exports = mongoose.model('pin', pinSchema)
