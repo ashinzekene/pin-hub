@@ -1,6 +1,6 @@
 const express = require('express')
 const Categories = require('../models/category')
-const { isUser } = require('./middlewares')
+const { adminCategory } = require('./middlewares')
 router = express.Router()
 
 router.param('category', (req, res, next, id) => {
@@ -15,8 +15,17 @@ router.param('category', (req, res, next, id) => {
   });
 });
 
+router.get("categories", (req, res) => {
+  Categories.find({ user: req.user._id}, (err, categories) => {
+    res.json(categories)
+  })
+})
 
-router.post("/category/create", (req, res) => {
+router.get("categories/:category", adminCategory, (req, res) => {
+  res.json(res.category)
+})
+
+router.post("categories/create", (req, res) => {
   const { name, description, photoUrl, subscriptions } = req.body
   if (!name || !description) {
     res.json({ err: "Incomplete details" })
@@ -26,15 +35,17 @@ router.post("/category/create", (req, res) => {
   })
 })
 
-router.post("/category/:category/edit", isUser(req.category.user), (req, res) => {
+router.post("categories/:category/edit", adminCategory, (req, res) => {
   const { name, description, photoUrl, subscriptions, id } = req.body
   Categories.findByIdAndUpdate(id, { name, description, subscriptions, photoUrl }, (err, category) => {
     res.json(category)
   })
 })
 
-res.post("/category/:category/delete", isUser(req.category.user), (req, res) => {
+router.post("categories/:category/delete", adminCategory, (req, res) => {
   Categories.findOneAndRemove(id, (err, categories) => {
     res.json(categories)
   })
 })
+
+module.exports = router

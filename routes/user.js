@@ -12,6 +12,7 @@ router.get('/categories',function (req, res) {
 	res.render('user/categories')
 })
 router.use('pins', require('./pin'))
+router.use('categories', require('./category'))
 
 // route.post('/delete/:id', function(req, res) {
 // 	obj = {'_id': req.params.id}
