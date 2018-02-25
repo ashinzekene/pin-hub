@@ -5,15 +5,19 @@ const { Schema } = mongoose
 const subscriptionSchema = new Schema({
 	title: String,
 	description: String,
-	price: Number
+	price: String
 })
 
 const categorySchema = new Schema({
 	name: String,
 	description: String,
-	validity: String,
 	photoUrl: String,
-	subscriptionType: [subscriptionSchema]
+	user : {
+    type : String,
+    ref : 'users',
+    required: true,
+  },
+	subscriptions: [subscriptionSchema]
 })
 
 const category = module.exports = mongoose.model('category', categorySchema)
