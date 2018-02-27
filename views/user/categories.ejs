@@ -1,47 +1,69 @@
 <%- include('../templates/user-header', { styles: [] }) %>
-<%- include('../templates/sidebar', { page: "categories" }); %>
-<div id="page-content-wrapper" class="container m-auto pt-5">
-  <div class="mx-4 panel">
-    <div class="display-4 p-3">Create a New Category</div>
-    <form action="/user/category/create" class="p-3" method="post">
-      <div class="form-group form-row">
-        <div class="col-3">Category Name</div>
-        <div class="col-9">
-          <input type="text" class="form-control" name="name">  
-        </div>
+  <%- include('../templates/sidebar', { page: "categories" }); %>
+    <div id="page-content-wrapper" class="container m-auto pt-5">
+      <div class="mx-4 panel">
+        <div class="display-4 p-3">Create a New Category</div>
+        <form action="/user/category/create" class="p-3" method="post">
+          <div class="form-group form-row">
+            <div class="col-3">Category Name</div>
+            <div class="col-9">
+              <input type="text" id="cat-name" class="form-control" name="name">
+            </div>
+          </div>
+          <div class="form-group form-row">
+            <div class="col-3">Category Description</div>
+            <div class="col-9">
+              <textarea type="text" id="cat-description" class="form-control" name="description" required></textarea>
+            </div>
+          </div>
+          <div class="form-group form-row">
+            <div class="col-3">Category Name</div>
+            <div class="col-9">
+              <input type="text" id="cat-not-name" class="form-control" name="name">
+            </div>
+          </div>
+          <div class="form-group form-row py-4">
+            <button class="btn btn-primary submit btn-lg">Create Category</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group form-row">
-        <div class="col-3">Category Description</div>
-        <div class="col-9">
-          <textarea type="text" class="form-control" name="description" required></textarea>  
-        </div>
+      <div class="panel">
+        <div class="display-4 p-3">Your Categories</div>
+        <% if (typeof categories === 'object' && categories.length) { %>
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+            <% categories.forEach(category => { %>
+              <tr>
+                <td>
+                  <%= category.name %>
+                </td>
+                <td>
+                  <%= category.description %>
+                </td>
+              </tr>
+              <% }) %>
+          </table>
+          <% } else { %>
+            <h3 class="text-center p-3">You do not have any categories yet. Fill the form above to create one</h3>
+            <% } %>
       </div>
-      <div class="form-group form-row">
-        <div class="col-3">Category Name</div>
-        <div class="col-9">
-          <input type="text" class="form-control" name="name">
-        </div>
-      </div>
-      <div class="form-group form-row py-4">
-        <button class="btn btn-primary submit btn-lg">Create Category</button>
-      </div>
-    </form>
-  </div>
-  <div class="panel">
-    <div class="display-4 p-3">Your Categories</div>
-    <% if (typeof categories === 'object' && categories.length) { %>
-    <% } else { %>
-      <h3 class="text-center p-3">You do not have any categories yet. Fill the form above to create one</h3>
-    <% } %>
-  </div>
-</div>
-<script>
-  window.onload = function () {
-    $('form').submit(e => {
-      e.preventDefault()
-       console.log($(this).serialize())
-      // $.post('/user/categories/create')
-    })
-  }
-</script>
-<%- include('../templates/bottom') %>
+    </div>
+    <script>
+      window.onload = function () {
+        $('form').submit(e => {
+          e.preventDefault()
+          let data = {
+            name: $("#cat-name").val(),
+            description: $("#cat-description").val(),
+          }
+          console.log("Serialized", data)
+          $.post('/user/categories/create', function(result) {
+            conosle.log("Result: ", result)
+          })
+        })
+      }
+    </script>
+    <%- include('../templates/bottom') %>

@@ -28,7 +28,7 @@ router.get("categories/:category", adminCategory, (req, res) => {
 router.post("categories/create", (req, res) => {
   const { name, description, photoUrl, subscriptions } = req.body
   if (!name || !description) {
-    res.json({ err: "Incomplete details" })
+    return res.json({ err: "Incomplete details" })
   }
   Categories.create({ user: req.user._id ,name, description, subscriptions, photoUrl }, (err, category) => {
     res.json(category)

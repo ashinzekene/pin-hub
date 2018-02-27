@@ -42,7 +42,7 @@ app.use(passport.session())
 app.set('view engine', 'ejs')
 
 app.use('/', frontEnd)
-app.use('/user', isAuthenticated, user)
+app.use('/user', user)
 app.use((err, req, res, next) => {
 	console.log(err)
 	res.render('error')
