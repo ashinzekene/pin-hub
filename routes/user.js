@@ -7,14 +7,17 @@ const Pins = require("../models/pins")
 router.get('/', function (req, res) {
 	res.render('user/dashboard', { user: req.user })
 })
-router.get('/pins',function (req, res) {
+router.get('/pins', function (req, res) {
 	Pi
 	res.render('user/pins')
 })
 
-router.get('/categories',function (req, res) {
-
-	res.render('user/categories')
+router.get('/categories', function (req, res) {
+	Categories.find({ user: req.user._id })
+		.then(categories => {
+			console.log("Categories", categories)
+			res.render('user/categories', { user: req.user, categories })
+		})
 })
 
 // route.post('/delete/:id', function(req, res) {
