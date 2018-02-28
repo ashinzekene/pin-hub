@@ -47,7 +47,7 @@
               <% }) %>
           </table>
           <% } else { %>
-            <h3 class="text-center p-3">You do not have any categories yet. Fill the form above to create one</h3>
+            <h5 class="text-center p-3">You do not have any categories yet. Fill the form above to create one</h5>
             <% } %>
       </div>
     </div>
@@ -60,8 +60,8 @@
             description: $("#cat-description").val(),
           }
           console.log("Serialized", data)
-          $.post('/user/categories/create', function(result) {
-            conosle.log("Result: ", result)
+          $.post('/categories/create', data ,function(result) {
+            console.log("Result: ", result)
           })
         })
       }

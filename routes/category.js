@@ -15,18 +15,13 @@ router.param('category', (req, res, next, id) => {
   });
 });
 
-router.get("categories", (req, res) => {
-  Categories.find({ user: req.user._id}, (err, categories) => {
-    res.json(categories)
-  })
-})
-
-router.get("categories/:category", adminCategory, (req, res) => {
+router.get("/:category", adminCategory, (req, res) => {
   res.json(res.category)
 })
 
-router.post("categories/create", (req, res) => {
+router.post("/create", (req, res) => {
   const { name, description, photoUrl, subscriptions } = req.body
+  console.log(req.body)
   if (!name || !description) {
     return res.json({ err: "Incomplete details" })
   }
@@ -35,14 +30,14 @@ router.post("categories/create", (req, res) => {
   })
 })
 
-router.post("categories/:category/edit", adminCategory, (req, res) => {
+router.post("/:category/edit", adminCategory, (req, res) => {
   const { name, description, photoUrl, subscriptions, id } = req.body
   Categories.findByIdAndUpdate(id, { name, description, subscriptions, photoUrl }, (err, category) => {
     res.json(category)
   })
 })
 
-router.post("categories/:category/delete", adminCategory, (req, res) => {
+router.post("/:category/delete", adminCategory, (req, res) => {
   Categories.findOneAndRemove(id, (err, categories) => {
     res.json(categories)
   })

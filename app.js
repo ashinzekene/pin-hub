@@ -1,26 +1,28 @@
-var express =  require('express')
-var mongoose = require('mongoose')
-var bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
-var session = require('express-session')
-var flash = require('connect-flash')
-var favicon = require('express-favicon')
-var logger = require("morgan")
-var passport = require("passport")
-
-var init = require('./logic/passport-init')
-var app = express()
-var frontEnd = require('./routes/front')
-var user = require("./routes/user")
+const express =  require('express')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const flash = require('connect-flash')
+const favicon = require('express-favicon')
+const logger = require("morgan")
+const passport = require("passport")
+const pin = require('./routes/pin')
+const category = require('./routes/category')
+const init = require('./logic/passport-init')
+const frontEnd = require('./routes/front')
+const user = require("./routes/user")
 require('dotenv').config()
-var port = process.env.PORT || 5500
 
-mongoose.promise = Promise;
+const app = express()
+const port = process.env.PORT || 5500
+
+mongoose.promise = require('bluebird');
 init(passport, app)
 
 let mongoUrl = process.env.ENV === 'dev' ? 'mongodb://127.0.0.1/pin-hub' : process.env.DB_URL
 
-mongoose.connect(mongoUrl, { useMongoClient: true }, function(err) {
+mongoose.connect(mongoUrl, function(err) {
 	if (err) return console.log("Error in DB connection")
 	console.log("DB:", mongoUrl)
 })
@@ -37,12 +39,15 @@ app.use(session({secret: 'ekeneOwnsPinhub'}))
 app.use(flash())
 app.use("/assets", express.static("public"))
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())
 app.set('view engine', 'ejs')
 
 app.use('/', frontEnd)
-app.use('/user', user)
+app.use('/user', isAuthenticated, user)
+app.use('pins', isAuthenticated, pin)
+app.use('/categories', isAuthenticated, category)
 app.use((err, req, res, next) => {
 	console.log(err)
 	res.render('error')
