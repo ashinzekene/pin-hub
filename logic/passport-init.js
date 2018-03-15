@@ -1,4 +1,4 @@
-var User = require('../models/user')
+var User = require('../models/users')
 var LocalStrategy = require('passport-local').Strategy
 
 module.exports = function (passport, app) {
@@ -15,7 +15,7 @@ module.exports = function (passport, app) {
   passport.use('sign-in', new LocalStrategy({
     passReqToCallback: true
   }, function (req, username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
+    User.findOne({ username }, function (err, user) {
       if (err) done(err, false)
       if (!user) {
         done(null, false, req.flash('signinMessage', 'Username does not exist, You can create an account instead'))
@@ -31,7 +31,7 @@ module.exports = function (passport, app) {
   passport.use('sign-up', new LocalStrategy({
     passReqToCallback: true
   }, function (req, username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
+    User.findOne({ username }, function (err, user) {
       if (err) console.log('error occured')
       if (user) {
         done(null, false, req.flash('signupMessage', 'That username already exists'))

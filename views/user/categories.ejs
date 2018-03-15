@@ -1,6 +1,108 @@
 <%- include('../templates/user-header', { styles: [] }) %>
-<%- include('../templates/sidebar', { page: "categories" }); %>
-
-
-
-<%- include('../templates/bottom') %>
+  <%- include('../templates/sidebar', { page: "categories" }); %>
+    <div id="page-content-wrapper" class="container m-auto pt-5">
+      <div class="mx-4 panel">
+        <div class="display-4 p-3">Create a New Category</div>
+        <form action="/user/category/create" class="p-3" method="post">
+          <div class="form-group form-row">
+            <div class="col-3">Category Name</div>
+            <div class="col-9">
+              <input type="text" id="cat-name" class="form-control" name="name">
+            </div>
+          </div>
+          <div class="form-group form-row">
+            <div class="col-3">Category Description</div>
+            <div class="col-9">
+              <textarea type="text" id="cat-description" class="form-control" name="description" required></textarea>
+            </div>
+          </div>
+          <div class="form-group form-row">
+            <div class="col-3">Category Name</div>
+            <div class="col-9">
+              <input type="text" id="cat-not-name" class="form-control" name="name">
+            </div>
+          </div>
+          <div class="form-group form-row py-4">
+            <button class="btn btn-primary submit btn-lg">Create Category</button>
+          </div>
+        </form>
+      </div>
+      <div class="panel">
+        <div class="display-4 p-3 categories">Your Categories</div>
+        <% if (typeof categories === 'object' && categories.length) { %>
+            <div class="row bg-primary text-white border-radius p-3">
+              <div class="col-3">
+                Name
+              </div>
+              <div class="col-6">
+                Description
+              </div>
+              <div class="col-1">
+                Delete
+              </div>
+              <div class="col-1">
+                Edit
+              </div>
+            </div>
+            <% categories.forEach((category, i) => { %>
+              <div class="row category py-2">
+                <div class="col-3">
+                  <%= category.name %>
+                </div>
+                <div class="col-6">
+                  <%= category.description %>
+                </div>
+                <div class="col-1">
+                  <button class="btn btn-danger" onclick="deleteCategory('<%= category._id%>')">&times;</button>
+                </div>
+                <div class="col-1">
+                  <button class="btn" onclick="editCategory('<%= category._id%>')">Edit</button>
+                </div>
+              </div>
+            <% }) %>
+          <% } else { %>
+          <h5 class="text-center p-3">You do not have any categories yet. Fill the form above to create one</h5>
+          <% } %>
+      </div>
+    </div>
+    <script>
+      categories = <%- JSON.stringify(categories) %>
+      function deleteCategory(id) {
+        console.log("Delete", categories.find(({_id}) => _id === id ))
+      }
+      function editCategory(id) {
+        console.log("Edit", categories.find(({_id}) => _id === id ))
+      }
+      function insertCategory(category) {
+        $(".categories").append(`
+          <div class="row category py-2">        
+            <div class="col-3">
+              ${ category.name}
+            </div>
+            <div class="col-6">
+              ${ category.description } %>
+            </div>
+            <div class="col-1">
+              <button class="btn btn-danger" onclick="deleteCategory('${category._id}')">&times;</button>
+            </div>
+            <div class="col-1">
+              <button class="btn" onclick="editCategory('${category._id}')">Edit</button>
+            </div>
+          </div>
+        `)
+      }
+      window.onload = function () {
+        $('form').submit(e => {
+          e.preventDefault()
+          let data = {
+            name: $("#cat-name").val(),
+            description: $("#cat-description").val(),
+          }
+          console.log("Serialized", data)
+          $.post('/categories/create', data ,function(result) {
+            insertCategory(result)
+          })
+        })
+      }
+    </script>
+    <%- include('../templates/bottom') %>

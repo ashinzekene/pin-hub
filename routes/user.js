@@ -1,17 +1,24 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
+const User = require('../models/users')
+const Categories = require("../models/category")
+const Pins = require("../models/pins")
 
 router.get('/', function (req, res) {
 	res.render('user/dashboard', { user: req.user })
 })
-router.get('/pins',function (req, res) {
+router.get('/pins', function (req, res) {
+	Pi
 	res.render('user/pins')
 })
-router.get('/categories',function (req, res) {
-	res.render('user/categories')
+
+router.get('/categories', function (req, res) {
+	Categories.find({ user: req.user._id })
+		.then(categories => {
+			console.log("Categories", categories)
+			res.render('user/categories', { user: req.user, categories })
+		})
 })
-router.use('pins', require('./pin'))
 
 // route.post('/delete/:id', function(req, res) {
 // 	obj = {'_id': req.params.id}
